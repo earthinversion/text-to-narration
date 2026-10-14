@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "text-to-narration"
+version = "0.1.0"
+description = "Auditable local text and Markdown narration with Kokoro ONNX"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
+authors = [{name = "Earth Inversion"}]
+dependencies = ["markdown-it-py>=3,<5"]
+
+[project.optional-dependencies]
+tts = ["kokoro-onnx==0.6.1", "onnxruntime>=1.20,<2", "numpy>=1.26,<3", "soundfile>=0.12,<1", "phonemizer>=3.3,<4", "espeakng-loader>=0.2.4,<1"]
+dev = ["pytest>=8,<10", "ruff>=0.11,<1", "build>=1,<2"]
+
+[project.scripts]
+text-to-narration = "text_to_narration.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/earthinversion/text-to-narration"
+Issues = "https://github.com/earthinversion/text-to-narration/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]

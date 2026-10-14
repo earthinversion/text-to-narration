@@ -1,0 +1,22 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+models/
+output*/
+*.onnx
+*.bin
+*.wav
+*.mp3
+*.download
+.env
+.env.*
+.DS_Store
+
+# Local inference/debug session artifacts
+*.ses
