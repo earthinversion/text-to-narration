@@ -138,13 +138,15 @@ Edit a copy of `examples/pronunciations.json` and pass its path to `prepare`:
 ```json
 {
   "replacements": {
-    "AI": "A I"
+    "LLM": "L L M"
   },
   "phoneme_overrides": {}
 }
 ```
 
-Use explicit spoken replacements for technical terms and abbreviations. The original source is retained and substitutions are recorded, so review the resulting transcript for unintended changes. Numbers and citations are not automatically rewritten or removed. Plain-text mode does not invent a title.
+Keep `AI` unchanged: the pinned Kokoro tokenizer already produces both letter names (“ay eye”). Do not replace it with `A I`: the tokenizer treats the separated `A` as a weak article (“uh”), which can make the result sound like just “I”. Punctuation spellings such as `A.I.` are also context-sensitive and are not recommended as a workaround.
+
+Use explicit spoken replacements for other technical terms and abbreviations. The original source is retained and substitutions are recorded, so review the resulting transcript for unintended changes. Numbers and citations are not automatically rewritten or removed. Plain-text mode does not invent a title.
 
 ## Supported input
 
