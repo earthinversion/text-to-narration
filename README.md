@@ -2,7 +2,7 @@
 
 Convert plain text or simple Markdown into local AI narration with Kokoro. Prepare a reviewable transcript, generate WAV and MP3 audio, and keep a record of how the source became spoken text.
 
-**Author: [Earth Inversion](https://github.com/earthinversion)**
+**Author: [Utpal Kumar](https://github.com/earthinversion)**
 
 This project turns a previously task-specific narration workflow into a reusable command-line tool. It includes a generic example article, configurable pronunciation replacements, and checks that can be run without downloading a speech model.
 
