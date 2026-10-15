@@ -1,4 +1,4 @@
 {
-  "replacements": {"AI": "A I", "LLM": "L L M", "EEG": "E E G"},
+  "replacements": {"LLM": "L L M", "EEG": "E E G"},
   "phoneme_overrides": {}
 }
