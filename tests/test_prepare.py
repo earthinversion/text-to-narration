@@ -131,3 +131,21 @@ def test_trailing_blank_lines_are_audited():
     _, coverage = extract("A\n\n", "text")
     assert len(coverage) == 2
     assert coverage[-1]["status"] == "blank"
+
+
+@pytest.mark.parametrize("fmt,suffix", [("text", ".txt"), ("markdown", ".md")])
+def test_example_preserves_ai_and_source_coverage(tmp_path, fmt, suffix):
+    from pathlib import Path
+
+    source = tmp_path / ("article" + suffix)
+    text = "AI, AI-based, AI's, AI’s; AIR, ai, Ai, AIs, OpenAI, I. LLM and EEG."
+    source.write_text(text, encoding="utf-8")
+    config = Path(__file__).resolve().parents[1] / "examples" / "pronunciations.json"
+    out = tmp_path / "out"
+    prepare(source, out, fmt=fmt, pronunciations=config)
+    manifest = check_source(out)
+    assert manifest["segments"][0]["original_text"] == text
+    assert manifest["segments"][0]["text"] == text.replace("LLM", "L L M").replace("EEG", "E E G")
+    assert (out / "source.txt").read_text(encoding="utf-8") == text
+    coverage = json.loads((out / "source-coverage.json").read_text(encoding="utf-8"))
+    assert coverage == [{"line": 1, "status": "spoken", "source": text}]

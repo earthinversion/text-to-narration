@@ -26,5 +26,5 @@ jobs:
         with:
           python-version: '3.12'
       - run: sudo apt-get update && sudo apt-get install -y ffmpeg
-      - run: python -m pip install -e ".[dev]" numpy soundfile
+      - run: python -m pip install -e ".[dev,tts]"
       - run: python -m pytest
